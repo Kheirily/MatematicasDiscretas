@@ -1,14 +1,36 @@
 \documentclass[]{article}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage[spanish]{babel}
 
 %opening
+
+\lhead{\begin{picture}(0,0) \put(0,0){\includegraphics[width=20mm]{./logou.png}} \end{picture}}
+
 \title{Tarea 1 de IN1017 Matemáticas Discretas Combinatoria y Grafos}
 \author{Karin Momberg}
 
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+		\centering
+		\includegraphics[width=0.3\textwidth]{logo.png}\par\vspace{1cm}
+		{\scshape\LARGE Universidad de Aysén \par}
+		\vspace{1cm}
+		{\scshape\Large IN1017 Matemáticas Discretas Combinatoria y Grafos\par}
+		\vspace{1.5cm}
+		{\huge\bfseries Tarea 1\par}
+		\vspace{2cm}
+		{\Large\itshape Karin Momberg\par}
+		
+		\vfill
+		% fin de pag
+		{\large \Today\par}
+	\end{titlepage}
+
+%\maketitle
 Considerando la función exponencial y utilizando el software Octave se calcularon las siguientes funciones para los valores de x en el intervalo (0;5), utilizando un $\Delta x = 0,25$: \\
 $e^{x}$ \hspace{5mm} La función prederminada de Octave “Valor real”. \\
 $p(x)$ \hspace{2mm} Expansión de Taylor de orden 4. \\
@@ -16,28 +38,35 @@ $e^{x}_{4}$ \hspace{5mm} Utilizando la aproximación de e, de orden 4, elevar a 
 $e_{err1}$ \hspace{1mm} Diferencia entre ambas funciones ($e^{x} - p(x)$). \\
 $e_{err2}$ \hspace{1mm} Diferencia entre ambas funciones ($e^{x} - e^{x}_{4}$). \\
 $R_{L}$ \hspace{3mm} Resto de Lagrange, que aproxima el error de truncación del polinomio $p(x)$. \\\\
-Resultando en la siguiente gráfica:
+Resultando en la siguiente gráfica: 
+\includegraphics[width=\textwidth]{xd}
 
-\includegraphics[width=\textwidth]{xd} \\\\
 
 
 a) Indique el error absoluto de $e$, al aproximarlo con un polinomio de orden 4. \\\\
 
 
 
-Dado $E_{A} (x^{*}) = |x-x^{*}|$ y Considerando $x = e_{4}$ como la aproximación y $x^{*} = e$ como "valor ideal": Se tiene que el error absoluto de $e$ corresponde a: \\\\
-\begin{center} $E_{A} (e) = |e_{4}-e|$ \\
-	= fhfghfghdgdfg
-\end{center}
-
-Al Calcular el polinomio de orden 4 de e, se obtiene:
+Se define el error absoluto como:
 \begin{center}
-	contenido[inserte polinomio]s...
+	$E_{A} (x^{*}) = |x-x^{*}|$
+\end{center} 
+ Considerando $x = e_{4}$ como la aproximación y $x^{*} = e$ como "valor ideal" \\
+\begin{center} $E_{A} (e) = |e_{4}-e|$ \\
 \end{center}
 
+Se obtiene la aproximación de $e$ con un polinomio de orden 4 ($e_{4}$) 
+\begin{center}
+	$e_{4}$ = $\displaystyle\sum_{j=0}^{4} \displaystyle\frac{1^{j}}{j!}$ = $1 + \displaystyle\frac1{1!} + \displaystyle\frac1{2!} + \displaystyle\frac1{3!} + \displaystyle\frac1{4!}$ \\ 
+	= $1 + 1 + \displaystyle\frac1{2} + \displaystyle\frac1{6} + \displaystyle\frac1{24} = e_{4} = 2.7083$
+\end{center}
+\begin{center} $E_{A} (e) = |2,7083-e|   / e = proporcionado por Octave $ \\
+\end{center}
 ...
 
-b) Al aproximar $e$, por $e_{4}$, se tiene que $e = e_{4} + \Delta e$. Al aproximar $e^{5}$ utilizando como base $e_{4}$, resulta $e^{5} = e_{4}^5 + E_{T}$. Demuestre entonces que:\\\\
+
+b) Al aproximar $e$, por $e_{4}$, se tiene que $e = e_{4} + \Delta e$. Al aproximar $e^{5}$ utilizando como base $e_{4}$, resulta $e^{5} = e_{4}^5 + E_{T}$. Demuestre entonces que:
+\\\\
 \begin{center} $E_{T} = 4 \cdot e_{4}^4 \cdot \Delta e + k_{1} \cdot \Delta {e}^2 + k_{2} \cdot \Delta e^{3} + ...$ \end{center} 
 
 Donde $K_{i}$, son constantes. \\\\
