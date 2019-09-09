@@ -4,6 +4,8 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \usepackage[spanish]{babel}
+\usepackage{booktabs}
+\usepackage{caption}
 
 %opening
 
@@ -38,58 +40,319 @@ $e^{x}_{4}$ \hspace{5mm} Utilizando la aproximación de e, de orden 4, elevar a 
 $e_{err1}$ \hspace{1mm} Diferencia entre ambas funciones ($e^{x} - p(x)$). \\
 $e_{err2}$ \hspace{1mm} Diferencia entre ambas funciones ($e^{x} - e^{x}_{4}$). \\
 $R_{L}$ \hspace{3mm} Resto de Lagrange, que aproxima el error de truncación del polinomio $p(x)$. \\\\
-Resultando en la siguiente gráfica: 
-\includegraphics[width=\textwidth]{xd}
 
+\begin{flushleft}
+	Resultando en la siguiente gráfica: 
+\end{flushleft}
+\begin{center}
+	\includegraphics[width=\textwidth]{xd} \\ 
+\end{center}
+\begin{flushleft}
+	Figura 1. ex corresponde a $e^{x}$ (función predeterminada), p(x) corresponde a la expansión de Taylor de orden 4. ex4 corresponde a la aproximación de e de orden 4 elevada a x. err1 corresponde a la diferencia entre la $e^{x} - p(x)$. RL corresponde al error de Lagrange y err2 corresponde a la diferencia entre $e^{x} - e^{x}_{4}$. 
+\end{flushleft}
+	a) Indique el error absoluto de $e$, al aproximarlo con un polinomio de orden 4. 
 
+\begin{flushleft}
+	 Se define el error absoluto como:
+\end{flushleft}
 
-a) Indique el error absoluto de $e$, al aproximarlo con un polinomio de orden 4. \\\\
-
-
-
-Se define el error absoluto como:
 \begin{center}
 	$E_{A} (x^{*}) = |x-x^{*}|$
 \end{center} 
- Considerando $x = e_{4}$ como la aproximación y $x^{*} = e$ como "valor ideal" \\
+
+\begin{flushleft}
+			Considerando $x = e_{4}$ como la aproximación y $x^{*} = e$ como "valor ideal",  el error absoluto corresponde a:
+\end{flushleft}
+
 \begin{center} $E_{A} (e) = |e_{4}-e|$ \\
 \end{center}
 
-Se obtiene la aproximación de $e$ con un polinomio de orden 4 ($e_{4}$) 
+\begin{flushleft}
+	Se obtiene la aproximación de $e$ con un polinomio de orden 4 ($e_{4}$):
+\end{flushleft}
+
 \begin{center}
 	$e_{4}$ = $\displaystyle\sum_{j=0}^{4} \displaystyle\frac{1^{j}}{j!}$ = $1 + \displaystyle\frac1{1!} + \displaystyle\frac1{2!} + \displaystyle\frac1{3!} + \displaystyle\frac1{4!}$ \\ 
-	= $1 + 1 + \displaystyle\frac1{2} + \displaystyle\frac1{6} + \displaystyle\frac1{24} = e_{4} = 2.7083$
+	= $1 + 1 + \displaystyle\frac1{2} + \displaystyle\frac1{6} + \displaystyle\frac1{24} = 2.7083$	
 \end{center}
-\begin{center} $E_{A} (e) = |2,7083-e|   / e = proporcionado por Octave $ \\
+
+\begin{flushleft}
+Con $e_{4} = 2,7083$ y $e = 2,7183$ (Valor determinado por Octave). 
+\end{flushleft}
+
+\begin{center} $E_{A} (e) = |2,7083-2,7183| = 0,0100 $	
 \end{center}
-...
+
+\begin{flushleft}
+	Por lo tanto el  error absoluto corresponde a $0,0100$.\\
+\end{flushleft}
 
 
-b) Al aproximar $e$, por $e_{4}$, se tiene que $e = e_{4} + \Delta e$. Al aproximar $e^{5}$ utilizando como base $e_{4}$, resulta $e^{5} = e_{4}^5 + E_{T}$. Demuestre entonces que:
-\\\\
-\begin{center} $E_{T} = 4 \cdot e_{4}^4 \cdot \Delta e + k_{1} \cdot \Delta {e}^2 + k_{2} \cdot \Delta e^{3} + ...$ \end{center} 
+\begin{flushleft}
+	b) Al aproximar $e$, por $e_{4}$, se tiene que $e = e_{4} + \Delta e$. Al aproximar $e^{5}$ utilizando como base $e_{4}$, resulta $e^{5} = e_{4}^5 + E_{T}$. Demuestre entonces que:
+\end{flushleft}
 
-Donde $K_{i}$, son constantes. \\\\
+\begin{center} $E_{T} = 4 \cdot e_{4}^4 \cdot \Delta e + k_{1} \cdot \Delta {e}^2 + k_{2} \cdot \Delta e^{3} + ...$ 
+\end{center} 
 
-c) Si se desprecian los valores de orden superior ($\Delta e^{2}, \Delta e^{3}, ...$), Demuestre que: \\\\
-\begin{center} $E_{T} \approx (x-1) \cdot e_{4}^{x-1}\cdot \Delta e$ \end{center}
+\begin{flushleft}
+		Donde $K_{i}$, son constantes. \\
+\end{flushleft}
+			
+\begin{flushleft}
+	Si aproximamos $e^{5}$ con $e$ = $e_{4} + \Delta{e}$, obtenemos $e^{5} = (e_{4} + \Delta{e})^{5}$. Para resolver se utiliza, en este caso, el teorema del binomio. \\
+Teorema del binomio en su forma general: 
+\end{flushleft}
+\begin{center}
+	$(x+y)^n = \displaystyle\sum_{k=0}^{n} {{n}\choose{k}} \cdot x^{n-k}y^k $
 
-¿Es válida para todo x, o existe alguna restricción al respecto?
+\end{center}
 
-Demuestre además que el error relativo es posible aproximarlo:
-\begin{center} $E_{R} \approx (x-1) \cdot e_{4}^{-1}\cdot \Delta e$ \end{center}
-d) Compare la relación obtenida en letra c) con los valores de $e_{rr2}$. \\
+\begin{flushleft}
+	En este caso sería:
+\end{flushleft}
 
-e) Discuta:
+\begin{center}
+	$(e_{4} + \Delta{e})^{5} = \displaystyle\sum_{k=0}^{5} {{5}\choose{k}} \cdot e_{4}^{5-k}\cdot\Delta e^k $
+\end{center}
+
+\begin{flushleft}
+	Al resolver obtenemos la siguiente expresión: \\
+\end{flushleft}
+	
+\begin{center}
+$e^{5} = (e_{4} + \Delta{e})^{5} = e_{4}^{5} + 5\cdot{e^{4}_{4}}\cdot\Delta{e} + 10\cdot{e^{3}_{4}}\cdot\Delta{e^{2}} + 10\cdot{e^{2}_{4}}\cdot\Delta{e^{3}} +  5\cdot{e_{4}}\cdot\Delta{e^{4}} +  \Delta{e^{5}}$
+\end{center}
+	
+\begin{flushleft}
+	Teniendo en cuenta que $e^{5} = e^{5}_{4} + E_{T} $, Igualamos al resultado anterior: \\
+\end{flushleft}
+	
+\begin{center}
+$e^{5}_{4} + E_{T} = e_{4}^{5} + 5\cdot{e^{4}_{4}}\cdot\Delta{e} + 10\cdot{e^{3}_{4}}\cdot\Delta{e^{2}} + 10\cdot{e^{2}_{4}}\cdot\Delta{e^{3}} + 5\cdot{e_{4}}\cdot\Delta{e^{4}} + \Delta{e^{5}}$
+\end{center}
+
+\begin{flushleft}
+	Se cancelan términos iguales y se reemplazan las constantes por $K_{i}$ \\ ($k_{1} = 10\cdot{e^{3}_{4}}$ y $k_{2} = 10\cdot{e^{2}_{4}}$) resultando:
+\end{flushleft}
+
+\begin{center}
+	$E_{T}$ = $5\cdot{e^{4}_{4}}\cdot\Delta{e}$	+ $k_{1}\cdot\Delta{e^{2}}$ + $k_{2}\cdot\Delta{e^{3}}$ + ...\\
+\end{center}
+
+\begin{flushleft}
+	Es fácil ver que hay un error en el primer término de la expresión presente en el enunciado, cuyo valor debería ser "5", en vez de "4".
+Por lo tanto queda demostrado que $E_{T} \neq 4 \cdot e_{4}^4 \cdot \Delta e + k_{1} \cdot \Delta {e}^2 + k_{2} \cdot \Delta e^{3} + ...$ . \\
+\end{flushleft}
+	
+
+\begin{flushleft}
+	c) Si se desprecian los valores de orden superior ($\Delta e^{2}, \Delta e^{3}, ...$), Demuestre que: \\
+\end{flushleft}
+
+\begin{center} $E_{T} \approx (x-1) \cdot e_{4}^{x-1}\cdot \Delta e$
+\end{center}
+
+	
+\begin{flushleft}
+	En primer lugar, se puede utilizar la expresión anterior, despreciando los valores de orden superior:
+
+\end{flushleft}
+\begin{center}
+	$E_{T} = 5\cdot{e^{4}_{4}}\cdot\Delta{e}$ , con $x = 5$.
+\end{center}
+
+\begin{flushleft}
+	Si reescribimos la expresión $E_{T}$ de forma generalizada, obtenemos:
+\end{flushleft}
+
+\begin{center}
+	$E_{T} = x\cdot{e_{4}^{x-1}}\cdot\Delta{e}$ 
+\end{center}
+
+\begin{flushleft}
+	Al igualar el $E_{T}$ obtenido de la demostración anterior al presentado en el enunciado, es fácil ver que $x\cdot{e_{4}^{x-1}}\cdot\Delta{e} \neq (x-1) \cdot e_{4}^{x-1}\cdot \Delta e$ por lo que queda demostrado que $E_{T} \neq (x-1) \cdot e_{4}^{x-1}\cdot \Delta e$, sin embargo, cabe destacar que se cumpliría ssi el caso anterior estuviera correcto.\\
+\end{flushleft}
+
+	
+\begin{flushleft}
+	¿Es válida para todo x, o existe alguna restricción al respecto? \\
+\end{flushleft}
+
+\begin{flushleft}
+	El teorema del binomio utilizado sólo sirve en el caso de valores de x positivos enteros. Sin embargo, Newton generalizó la fórmula para exponentes reales, considerando una serie infinita:
+\end{flushleft}
+
+\begin{center}
+	$(x + y)^{r}$ = $\displaystyle\sum_{i=0}^{\infty} {r \choose i} x^{r-i}y^{i}$
+\end{center}
+En términos del enunciado queda de la siguiente manera:
+
+\begin{center}
+	$(e_{4} + \Delta{e})^{r} = \displaystyle\sum_{i=0}^{\infty} {r \choose i} e_{4}^{r-i}\cdot\Delta{e}^{i}$
+\end{center}
+Al desarrollar el binomio de Newton generalizado obtenemos:
+
+\begin{center}
+	$(e_{4} + \cdot\Delta{e})^{r} = \displaystyle\sum_{i=0}^{\infty} {r \choose i} e_{4}^{r-i}\cdot\Delta{e}^{i} = \displaystyle{r \choose 0}e_{4}^{r}\cdot\Delta{e}^{0} +  \displaystyle{r \choose 1}e_{4}^{r-1}\cdot\Delta{e}^{1} +  \displaystyle{r \choose 2}e_{4}^{r-2}\cdot\Delta{e}^{2}$ + ...
+\end{center}
+Al despreciar los valores de orden superior ($\Delta e^{2}, \Delta e^{3}, ...$), resulta la siguiente expresión:
+
+\begin{center}
+	$(e_{4} + \Delta{e})^{r} = \displaystyle\sum_{i=0}^{\infty} {r \choose i} e_{4}^{r-i}\cdot\Delta{e}^{i} = \displaystyle{r \choose 0}e_{4}^{r} +  \displaystyle{r \choose 1}e_{4}^{r-1}\cdot\Delta{e}$
+\end{center}
+
+\begin{flushleft}
+	Luego, se resuelven las combinatorias:
+	
+\end{flushleft}
+\begin{center}
+	$(e_{4} + \Delta{e})^{r}$ = $\displaystyle\frac{r!}{r!}e_{4}^{r}$ +  $\displaystyle\frac{r(r-1)!}{(r-1)!}e_{4}^{r-1}\cdot\Delta{e}$
+\end{center}
+
+\begin{flushleft}
+	Como resultado tenemos que: 
+\end{flushleft}
+
+\begin{center}
+	$(e_{4} + \Delta{e})^{r}$ = $e_{4}^{r}$ +  $r\cdot{e_{4}^{r-1}}\cdot\Delta{e}$
+\end{center}
+
+ 
+\begin{flushleft}
+	 y su error de truncación correspondería a $E_{T} = r\cdot{e_{4}^{r-1}}\cdot\Delta{e}$, muy parecido al caso de los exponentes positivos enteros, a diferencia de que en exponentes reales se considera una serie infinita. Se puede apreciar que nuevamente no se cumple el enunciado. \\
+
+\end{flushleft}
+Demuestre además que el error relativo es posible aproximarlo: 
+\begin{center} $E_{R} \approx (x-1) \cdot e_{4}^{-1}\cdot \Delta e$ \end{center} 
+\begin{flushleft}
+	Se define el error relativo como:
+\end{flushleft}
+
+\begin{center} $E_{R} (x^{*}) = \displaystyle\frac{|x-x^{*}|}{|x|} $ \\
+\end{center}
+
+\begin{flushleft}	
+Al reemplazar obtenemos lo siguiente:
+\end{flushleft}
+
+\begin{center}
+	$E_{R}(x^{*}) \approx\displaystyle\frac{x\cdot{e_{4}^{x-1}}\cdot\Delta{e}}{e^{x}_{4}}$
+\end{center}
+
+\begin{flushleft}
+	Se resuelve:
+\end{flushleft}
+
+\begin{center}
+	$E_{R}(x^{*}) \approx\displaystyle{x\cdot{e_{4}^{-1}}\cdot\Delta{e}}$
+\end{center}
+
+\begin{flushleft}
+	Dado el resultado se pudo demostrar que:
+\end{flushleft}
+\begin{center}
+	 $\displaystyle{x\cdot{e_{4}^{-1}}\Delta{e}} \neq (x-1) \cdot e_{4}^{-1}\cdot \Delta e$
+\end{center} 
+	
+
+\begin{flushleft}
+		d) Compare la relación obtenida en letra c) con los valores de $e_{rr2}$. \\
+\end{flushleft}
+
+
+
+\begin{tabular}{|r|r|}
+	
+		\toprule
+		\multicolumn{1}{|l|}{$e_{T}$} & \multicolumn{1}{l|}{$e_{rr2}$} \\
+		\midrule
+		0,00000 & 0,00000 \\
+		\midrule
+		0,00118 & 0,00118 \\
+		\midrule
+		0,00304 & 0,00302 \\
+		\midrule
+		0,00585 & 0,00581 \\
+		\midrule
+		0,01000 & 0,00995 \\
+		\midrule
+		0,01604 & 0,01596 \\
+		\midrule
+		0,02469 & 0,02458 \\
+		\midrule
+		0,03695 & 0,03681 \\
+		\midrule
+		0,05417 & 0,05399 \\
+		\midrule
+		0,07817 & 0,07795 \\
+		\midrule
+		0,11143 & 0,11116 \\
+		\midrule
+		0,15724 & 0,15693 \\
+		\midrule
+		0,22005 & 0,21972 \\
+		\midrule
+		0,30582 & 0,30550 \\
+		\midrule
+		0,42250 & 0,42225 \\
+		\midrule
+		0,58071 & 0,58065 \\
+		\midrule
+		0,79463 & 0,79491 \\
+		\midrule
+		1,08311 & 1,08398 \\
+		\midrule
+		1,47119 & 1,47305 \\
+		\midrule
+		1,99217 & 1,99561 \\
+		\midrule
+		2,69016 & 2,69604 \\
+		\bottomrule
+\end{tabular}
+\label{tab:comparar}
+\begin{flushleft}
+	Tabla 1: Comparación $e_{T}$ y $e_{rr2}$
+\end{flushleft}
+
+
+
+\begin{flushleft}
+	e) Discuta:
+\end{flushleft}
 
 \begin{itemize}
 	\item De las dos alternativas propuestas, ¿Cuál es la mejor forma de obtener una buena aproximación de $e^{x}$?
-
-	\item Suponga que usted propone obtener una buen aproximación de e, digamos con n iteraciones i.e. $e^{x} = e_{n}^{x} + E_{T}$ (en letra b) se usó n = 4). Qué valor de n deberíamos escoger para que $E_{T} \approx (x-1) \cdot e_{4}^{x-1} \cdot \Delta e < 1$ para $x = 10$. \\
-	
 \end{itemize}
 
+\begin{flushleft}
+	La mejor forma de obtener una buena aproximación es con $e_{rr2}$, pese a ser muy similar a la del $e_{T}$, el error es más pequeño.
+\end{flushleft}
+\begin{itemize}
+	\item Suponga que usted propone obtener una buen aproximación de e, digamos con n iteraciones i.e. $e^{x} = e_{n}^{x} + E_{T}$ (en letra b) se usó n = 4). Qué valor de n deberíamos escoger para que $E_{T} \approx (x-1) \cdot e_{4}^{x-1} \cdot \Delta e < 1$ para $x = 10$. \\
+\end{itemize}
 
-\section{}
+ 	
+ 	Se debería escoger $n = 8$ ya que el $e_{T} = 0,22306$, mientras que con $n = 7 $
+ 	se obtiene $e_{T} = 2,0316$, pasándose de 1.
+ 	\begin{flushleft}
+ 		Para obtener dichos valores se utilizó el siguiente código en Octave:
+ 	\end{flushleft}
+\begin{center}
+	 	\includegraphics{../b} \\
+\end{center}
+ 	
+\section*{Anexo}
+\begin{flushleft}
+	Codigo Octave (funciones):
+\end{flushleft}
+\begin{center}
+	\includegraphics{../1}
+\includegraphics{../2}
+\end{center}
+
+\begin{flushleft}
+	Códigos Octave y LaTeX: https://github.com/Kheirily/MatematicasDiscretas
+\end{flushleft}
 
 \end{document}
